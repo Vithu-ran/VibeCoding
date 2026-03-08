@@ -1,8 +1,8 @@
 :root {
     --primary: #3b82f6;
     --primary-hover: #2563eb;
-    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    --card-bg: rgba(255, 255, 255, 0.9);
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
     --text-main: #1e293b;
     --text-muted: #64748b;
     --accent-gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
@@ -17,6 +17,7 @@
 
 body {
     background: var(--bg-gradient);
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,7 +28,7 @@ body {
 /* Navbar Styling */
 .navbar {
     width: 100%;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
     display: flex;
     justify-content: center;
     animation: fadeInDown 0.8s ease-out;
@@ -36,30 +37,33 @@ body {
 .nav-links {
     display: flex;
     gap: 1rem;
-    background: white;
-    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    padding: 0.6rem;
     border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .nav-btn {
-    padding: 0.6rem 1.5rem;
+    padding: 0.6rem 1.8rem;
     border: none;
     background: transparent;
     border-radius: 25px;
     cursor: pointer;
-    font-weight: 500;
-    color: var(--text-muted);
-    transition: all 0.3s ease;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-btn:hover {
-    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-btn.active {
-    background: var(--primary);
-    color: white;
+    background: white;
+    color: #764ba2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Container & Sections */
@@ -90,20 +94,25 @@ body {
 .profile-card {
     background: var(--card-bg);
     width: 100%;
-    max-width: 400px;
-    padding: 3rem 2rem;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    max-width: 420px;
+    padding: 4rem 2.5rem;
+    border-radius: 32px;
+    /* Multi-layered shadow for depth */
+    box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.1),
+        0 25px 50px -12px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    animation: cardEntrance 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    animation: cardEntrance 1s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
 }
 
 .profile-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        0 20px 35px -5px rgba(0, 0, 0, 0.15),
+        0 40px 80px -15px rgba(0, 0, 0, 0.3);
 }
 
 /* Image Placeholder & Upload */
@@ -222,4 +231,60 @@ body {
 @keyframes cardEntrance {
     from { opacity: 0; transform: scale(0.9) translateY(40px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Social Grid Styling */
+.section-title {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.social-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.social-item span {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.social-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Platform specific hover colors */
+.whatsapp:hover { color: #25D366; }
+.facebook:hover { color: #1877F2; }
+.instagram:hover { color: #E4405F; }
+.linkedin:hover { color: #0A66C2; }
+.hackerrank:hover { color: #2EC866; }
+
+.social-item svg {
+    transition: transform 0.3s ease;
+}
+
+.social-item:hover svg {
+    transform: scale(1.1);
 }
