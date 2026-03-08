@@ -12,7 +12,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
 
 body {
@@ -23,6 +22,11 @@ body {
     flex-direction: column;
     align-items: center;
     color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .nav-btn, .action-btn, .initial-placeholder {
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Navbar Styling */
@@ -175,33 +179,35 @@ body {
 
 /* Profile Info */
 .name {
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     margin-bottom: 0.25rem;
+    letter-spacing: -0.5px;
 }
 
 .stream {
     color: var(--primary);
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 1.5rem;
 }
 
 .divider {
-    height: 2px;
-    width: 40px;
+    height: 3px;
+    width: 30px;
     background: var(--primary);
-    margin: 0 auto 1.5rem;
-    opacity: 0.3;
+    margin: 0 auto 1.75rem;
+    border-radius: 2px;
 }
 
 .bio {
     color: var(--text-muted);
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    text-align: justify;
 }
 
 .action-btn {
